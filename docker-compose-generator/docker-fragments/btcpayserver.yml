@@ -24,7 +24,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.btcpayserver.rule=Host(`${BTCPAY_HOST}`)"
-      - "traefik.http.routers.btcpayserver.entrypoints=web"
+      - "traefik.http.routers.btcpayserver.entrypoints=websecure"
+      - "traefik.http.routers.btcpayserver.tls.certresolver=letsencrypt"
       - "traefik.http.services.btcpayserver.loadbalancer.server.port=49392"
       # Traefic can not accept list from BTCPAY_ADDITIONAL_HOSTS, see Traefik/README.md
     networks:
